@@ -11,9 +11,9 @@
     The most basic linked list written in rust implemented as a stack.
     <br />
     ·
-    <a href="https://github.com/MagnusChase03/MachineLearningAlgarithms/issues">Report Bug</a>
+    <a href="https://github.com/MagnusChase03/RustLinkedList/issues">Report Bug</a>
     ·
-    <a href="https://github.com/MagnusChase03/MachineLearningAlgarithms/issues">Request Feature</a>
+    <a href="https://github.com/MagnusChase03/RustLinkedList/issues">Request Feature</a>
   </p>
 </div>
 
