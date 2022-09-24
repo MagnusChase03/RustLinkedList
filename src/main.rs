@@ -1,4 +1,5 @@
 mod linked_list;
+
 fn main() {
     let mut root: linked_list::Node = linked_list::Node {
         data: 0,
