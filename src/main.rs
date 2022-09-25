@@ -1,16 +1,14 @@
 mod linked_list;
+use linked_list::LinkedList;
 
 fn main() {
-    let mut root: linked_list::Node = linked_list::Node {
-        data: 0,
-        next: linked_list::NextNode::Null,
-    };
-    root.push(1);
-    root.push(2);
 
-    root.print();
+    let mut list: LinkedList<i32> = LinkedList::new();
+    list.push(0);
+    list.push(1);
+    list.print();
+    
+    list.pop();
+    list.print();
 
-    root.pop();
-
-    root.print();
 }

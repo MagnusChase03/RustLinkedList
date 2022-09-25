@@ -1,50 +1,63 @@
-pub enum NextNode {
-    Null,
-    NextNode(Box<Node>),
+type NextNode<T> = Option<Box<Node<T>>>;
+struct Node<T> {
+    data: T,
+    next: NextNode<T>,
 }
 
-pub struct Node {
-    pub data: i32,
-    pub next: NextNode,
-}
+impl<T: std::fmt::Debug> Node<T> {
+    fn print(&self) {
+        println!("{:?} ", self.data);
 
-impl Node {
-    pub fn push(&mut self, data: i32) {
-        match self.next {
-            NextNode::Null => {
-                let new_node: Node = Node {
-                    data: data,
-                    next: NextNode::Null,
-                };
-                self.next = NextNode::NextNode(Box::new(new_node));
+        match &self.next {
+
+            None => {},
+            Some(node) => {
+
+                node.print();
+
             }
-            NextNode::NextNode(ref mut next_node) => {
-                next_node.push(data);
-            }
+
         }
+    }
+}
+
+pub struct LinkedList<T> {
+    head: NextNode<T>,
+}
+
+impl<T: std::fmt::Debug> LinkedList<T> {
+    pub fn new() -> LinkedList<T> {
+
+        LinkedList { head:NextNode::None }
+
+    }
+
+    pub fn push(&mut self, data: T) {
+        let new_node = Box::new(Node {
+            data: data,
+            next: self.head.take(),
+        });
+        self.head = Some(new_node);
     }
 
     pub fn pop(&mut self) {
-        match self.next {
-            NextNode::Null => {}
-            NextNode::NextNode(ref mut next_node) => match next_node.next {
-                NextNode::Null => {
-                    self.next = NextNode::Null;
-                }
-                NextNode::NextNode(ref _another_node) => {
-                    next_node.pop();
-                }
-            },
-        }
+        self.head.take().map(|node| {
+            self.head = node.next;
+        });
     }
 
     pub fn print(&self) {
-        println!("{} ", self.data);
-        match self.next {
-            NextNode::Null => {}
-            NextNode::NextNode(ref next_node) => {
-                next_node.print();
+
+        match &self.head {
+
+            None => {},
+            Some(node) => {
+
+                node.print();
+
             }
+
         }
+
     }
 }
