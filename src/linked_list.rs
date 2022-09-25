@@ -9,14 +9,10 @@ impl<T: std::fmt::Debug> Node<T> {
         println!("{:?} ", self.data);
 
         match &self.next {
-
-            None => {},
+            None => {}
             Some(node) => {
-
                 node.print();
-
             }
-
         }
     }
 }
@@ -27,9 +23,9 @@ pub struct LinkedList<T> {
 
 impl<T: std::fmt::Debug> LinkedList<T> {
     pub fn new() -> LinkedList<T> {
-
-        LinkedList { head:NextNode::None }
-
+        LinkedList {
+            head: NextNode::None,
+        }
     }
 
     pub fn push(&mut self, data: T) {
@@ -47,17 +43,11 @@ impl<T: std::fmt::Debug> LinkedList<T> {
     }
 
     pub fn print(&self) {
-
         match &self.head {
-
-            None => {},
+            None => {}
             Some(node) => {
-
                 node.print();
-
             }
-
         }
-
     }
 }
